@@ -1,0 +1,49 @@
+/*
+ *
+ * MMM-Motion-Camera
+ *
+ * Valentin
+ * MIT Licensed.
+ *
+ * Custom here your css module
+ *
+ */
+.wrapper {
+    /*height: 240px;*/
+    /*width: 300px;*/
+}
+
+.wrapper_motion {
+    position: fixed;
+    left: 50%;
+    /*top: 50%;*/
+    margin-left: -50%;
+    /*margin-top: -50%;*/
+    z-index: 5;
+    height: 75vh;
+    width: 100vw;
+    background: radial-gradient(rgba(255, 255, 255, 0), black);
+    text-align: center;
+    padding-top: 25vh;
+}
+
+.camera {
+    height: 240px;
+    width: 300px;
+}
+
+.camera_motion {
+    height: 480px;
+    width: 600px;
+    margin: auto;
+}
+
+.label {
+    font-size: larger;
+}
+
+.iframe {
+    border: none;
+    height: 100%;
+    width: 100%;
+}
