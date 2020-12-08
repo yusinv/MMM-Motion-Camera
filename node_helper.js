@@ -6,7 +6,6 @@ const environ = Object.assign(process.env, {DISPLAY: ":0"});
 module.exports = NodeHelper.create({
 
     config: {},
-    snapshots: {},
     players: {},
 
     start: function () {

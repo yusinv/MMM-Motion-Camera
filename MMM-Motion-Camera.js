@@ -18,7 +18,22 @@ Module.register("MMM-Motion-Camera", {
 
     start: function () {
         this.motionDetected = false;
+        this.motionTimer = null;
         this.sendSocketNotification("INIT", this.config);
+    },
+
+    motionStarted: function (payload) {
+        this.motionDetected = true;
+        this.motionTimer = setTimeout(() => this.motionFinished(payload), 10 * 60 * 1000)
+        this.updateDom(this.config.animationSpeed);
+        this.sendSocketNotification("START_PLAYER", payload);
+    },
+
+    motionFinished: function (payload) {
+        this.motionDetected = false;
+        clearTimeout(this.motionTimer);
+        this.updateDom(this.config.animationSpeed);
+        this.sendSocketNotification("STOP_PLAYER", payload);
     },
 
     getDom: function () {
@@ -65,13 +80,9 @@ Module.register("MMM-Motion-Camera", {
 
     notificationReceived: function (notification, payload, sender) {
         if (notification === "MOTION_START") {
-            this.motionDetected = true;
-            this.updateDom(this.config.animationSpeed);
-            this.sendSocketNotification("START_PLAYER", payload);
+            this.motionStarted(payload);
         } else if (notification === "MOTION_END") {
-            this.motionDetected = false;
-            this.updateDom(this.config.animationSpeed);
-            this.sendSocketNotification("STOP_PLAYER", payload);
+            this.motionFinished(payload);
         } else if (notification === "VIDEO_SNAPSHOT") {
             this.sendSocketNotification("PREPARE_SNAPSHOT", payload);
         }
