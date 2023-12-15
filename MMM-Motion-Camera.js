@@ -42,23 +42,24 @@ Module.register("MMM-Motion-Camera", {
         wrapper.className = "wrapper";
 
         const frameDiv = document.createElement("div");
-        frameDiv.id = "camera_frame"
-        wrapper.appendChild(frameDiv);
+        frameDiv.id = "camera_frame";
+        frameDiv.className = "camera";
+	wrapper.appendChild(frameDiv);
 
         if (this.motionDetected) {
-            wrapper.className = "wrapper_motion";
-            const label = document.createElement("label");
+	    const wrapper_motion = document.createElement("div");
+            wrapper_motion.className = "wrapper_motion";
+	    const camera_motion = document.createElement("div");
+	    camera_motion.className = "camera_motion";
+            wrapper_motion.appendChild(camera_motion);
+	    const label = document.createElement("label");
             label.innerHTML = this.translate("MOTION");
             label.className = "label";
-            wrapper.appendChild(label);
-            wrapper.appendChild(document.createElement("br"));
-            frameDiv.className = "camera_motion";
-        } else {
-            frameDiv.className = "camera";
+            wrapper_motion.appendChild(label);
+	    wrapper.appendChild(wrapper_motion);
+            //wrapper_motion.appendChild(document.createElement("br"));
+            
         }
-
-
-        wrapper.appendChild(frameDiv);
         return wrapper;
     },
 

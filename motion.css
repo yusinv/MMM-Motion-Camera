@@ -15,16 +15,13 @@
 
 .wrapper_motion {
     position: fixed;
-    left: 50%;
-    /*top: 50%;*/
-    margin-left: -50%;
-    /*margin-top: -50%;*/
-    z-index: 5;
-    height: 75vh;
-    width: 100vw;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 15;
     background: radial-gradient(rgba(255, 255, 255, 0), black);
     text-align: center;
-    padding-top: 25vh;
 }
 
 .camera {
@@ -34,16 +31,18 @@
 
 .camera_motion {
     height: 480px;
-    width: 600px;
-    margin: auto;
+    width: 840px;
+    margin-top: 66%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .label {
     font-size: larger;
 }
 
-.iframe {
-    border: none;
-    height: 100%;
-    width: 100%;
-}
+
+
+
+
+
