@@ -28,8 +28,8 @@ module.exports = NodeHelper.create({
     startFFPlay: function (name) {
         const sc = this.config[name];
         const cmd = "ffplay";
-        const args = [sc.streamUrl, "-x", sc.playerWidth, "-y", sc.playerHeight, "-v", "error"];
-        const opts = {detached: false, env: environ, stdio: ["ignore", "ignore", "pipe"]};
+        const args = [sc.streamUrl, "-x", sc.playerWidth, "-y", sc.playerHeight, "-v", "error","-alwaysontop"];
+        const opts = {detached: false, env: environ, stdio: ["ignore", "ignore", "pipe"],timeout: 600000};
 
         this.players[name] = childProcess.spawn(cmd, args, opts);
 
